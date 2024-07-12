@@ -57,7 +57,7 @@ public class Principal {
           autoresVivos.forEach(a -> System.out.println(a.toString()));
           break;
         case 5:
-          System.out.println("Informe o idioma dos livros que deseja listar: frances, portugues, inglês ou espanhol");
+          System.out.println("Informe o idioma dos livros que deseja listar: frances, português, inglês ou espanhol");
           String idioma = leitura.nextLine();
           String siglaIdioma = converteIdioma(idioma);
           if(siglaIdioma.contains("erro")){
@@ -82,7 +82,7 @@ public class Principal {
         idioma = "fr";
         break;
 
-      case "portugues":
+      case "português":
         idioma = "pt";
         break;
 
