@@ -2,7 +2,6 @@ package br.com.alura.literAlura.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,11 +10,20 @@ public class Livro {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(unique = true)
   private String titulo;
-  @ManyToMany
-  private List<Autor> autores;
+  @ManyToOne
+  private Autor autor;
   private String idioma;
   private Double numeroDownloads;
+
+  public Livro(){}
+
+  public Livro(String titulo, String idioma, Double numeroDownloads) {
+    this.titulo = titulo;
+    this.idioma = idioma;
+    this.numeroDownloads = numeroDownloads;
+  }
 
   public Long getId() {
     return id;
@@ -33,12 +41,13 @@ public class Livro {
     this.titulo = titulo;
   }
 
-  public List<Autor> getAutores() {
-    return autores;
+  public Autor getAutor() {
+    return autor;
   }
 
-  public void setAutores(List<Autor> autores) {
-    this.autores = autores;
+  public void setAutor(Autor autor) {
+    autor.setLivros(this);
+    this.autor = autor;
   }
 
   public String getIdioma() {
@@ -59,11 +68,11 @@ public class Livro {
 
   @Override
   public String toString() {
-    return "Livro{" +
-            "titulo='" + titulo + '\'' +
-            ", autores=" + autores +
-            ", idioma='" + idioma + '\'' +
-            ", numeroDownloads=" + numeroDownloads +
-            '}';
+    return "\tLivro:" +
+            "\nTitulo= " + titulo +
+            "\nAutor= " + autor.getNome() +
+            "\nidioma= " + idioma +
+            "\nNumeroDownloads= " + numeroDownloads +
+            "\n\t***\t***\n";
   }
 }

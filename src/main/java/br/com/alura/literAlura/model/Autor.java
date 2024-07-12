@@ -1,9 +1,8 @@
 package br.com.alura.literAlura.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,12 +11,20 @@ public class Autor {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(unique = true)
   private String nome;
   private int anoNascimento;
   private int anoFalecimento;
-  @ManyToMany(mappedBy = "autores")
-  private List<Livro> livros;
+  @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private List<Livro> livros = new ArrayList<>();
 
+  public Autor(){}
+
+  public Autor(String nome, int anoNascimento, int anoFalecimento) {
+    this.nome = nome;
+    this.anoNascimento = anoNascimento;
+    this.anoFalecimento = anoFalecimento;
+  }
 
   public Long getId() {
     return id;
@@ -55,17 +62,18 @@ public class Autor {
     return livros;
   }
 
-  public void setLivros(List<Livro> livros) {
-    this.livros = livros;
+  public void setLivros(Livro livro) {
+    livros.add(livro);
   }
 
   @Override
   public String toString() {
-    return "Autor{"  +
-            ", nome='" + nome + '\'' +
-            ", anoNascimento=" + anoNascimento +
-            ", anoFalecimento=" + anoFalecimento +
-            ", livros=" + livros +
-            '}';
+
+    return "\tAutor:"  +
+            "\nNome= " + nome +
+            "\nAno de nascimento= " + anoNascimento +
+            "\nAno de falecimento= " + anoFalecimento +
+            "\n" + livros.toString() +
+            "\n/////\t/////";
   }
 }
