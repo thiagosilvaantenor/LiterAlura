@@ -90,7 +90,7 @@ As classes `br.com.alura.literAlura.service.ConsumoApi`, `br.com.alura.literAlur
 - DadosAutor e DadosLivro: recebem os dados para a criação das classes entidade Autor e Livro 
 
 ### Classes de entidade
-As classes `br.com.alura.literAlura.model.Autor` e `br.com.alura.literAlura.model.Livro` representam as tabelas que serão usadas no banco de dados, através de anotações da biblioteca JPA
+As classes `br.com.alura.literAlura.model.Autor` e `br.com.alura.literAlura.model.Livro` representam as tabelas que serão usadas no banco de dados, através de anotações da biblioteca Spring Data JPA
 
 ### Classes de repository
 As interfaces `br.com.alura.literAlura.repository.AutorRepository` e `br.com.alura.literAlura.repository.LivroRepository` herdam da interface `JpaRepository` posibilitando o uso de derived queries para mainupulação do banco de dados <br>
@@ -174,6 +174,8 @@ Por fim o quinto método, supondo que eu queira ver apenas os livros em portugu�
 - API
   - [Gutendex](https://gutendex.com)
 
+- Gerenciador de dependencias
+  - [Maven](https://maven.apache.org)
 
 ## Agradecimentos
 Agradeço a Alura e todos os professores da formação por todo o aprendizado passado e desafios propostos.
