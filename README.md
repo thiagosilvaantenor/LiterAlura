@@ -57,7 +57,8 @@ Métodos necessários:
 # Sobre o projeto
 ### Classe de configuração
 
-Dentro do pacote `br.com.alura.literAlura.resources` no arquivo `application.properties`, foi utilizado de variaveis de ambiente para o host, username e senha do banco de dados
+Dentro do pacote `br.com.alura.literAlura.resources` no arquivo `application.properties`, foi utilizado de variaveis de ambiente para o host (`localhost`), username e senha do banco de dados<br>
+Portanto caso queira rodar o projeto será necessário criar estas variaveis de ambiente
 
 <div align="center">
   
